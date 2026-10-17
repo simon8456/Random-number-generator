@@ -18,6 +18,17 @@ ORDER = [("s00_intro", "Intro"), ("s01_v42", "V42"), ("s02_v51", "V51"), ("s03_v
          ("s16_v112", "V112"), ("s17_v131", "V131"), ("s18_v132", "V132"), ("s00_intro", "Outro")]
 
 
+CHAPTERS = {"Intro": "Úvod a značení", "V42": "V 4.2 Kolmice bodem na přímce", "V51": "V 5.1 Vedlejší úhly",
+            "V52": "V 5.2 Vrcholové úhly", "V62": "V 6.2 Součet úhlů v trojúhelníku",
+            "V43": "V 4.3 Kolmice bodem mimo přímku", "V64": "V 6.4 Vnější úhel trojúhelníku",
+            "V66": "V 6.6 Rovnoramenný trojúhelník", "V81": "V 8.1 Součet úhlů ve čtyřúhelníku",
+            "V82": "V 8.2 Vnější úhly čtyřúhelníku", "V83": "V 8.3 Vlastnosti rovnoběžníku",
+            "V85": "V 8.5 Kritéria rovnoběžníku", "V73": "V 7.3 Eukleidova věta o výšce",
+            "V74": "V 7.4 Eukleidova věta o odvěsně", "V104": "V 10.4 Středový a obvodový úhel",
+            "V111": "V 11.1 Osa úsečky", "V112": "V 11.2 Poloroviny určené osou",
+            "V131": "V 13.1 Mocnost bodu", "V132": "V 13.2 Mocnost bodu a tečna", "Outro": "Závěr"}
+
+
 def render(item, low):
     mod, cls = item
     q = ["-ql"] if low else ["--resolution", "1920,1080", "--frame_rate", "30"]
@@ -53,9 +64,22 @@ def main():
     with open(lst, "w") as f:
         for p in paths:
             f.write(f"file '{p}'\n")
+    # kapitoly (aby šlo v přehrávači skákat po větách)
+    meta = os.path.join(MEDIA, "chapters.txt")
+    t = 0.0
+    with open(meta, "w", encoding="utf-8") as f:
+        f.write(";FFMETADATA1\ntitle=Důkazy z planimetrie\n")
+        for (mod, cls), p in zip(ORDER, paths):
+            d = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                                      "-of", "csv=p=0", p], capture_output=True, text=True).stdout)
+            f.write(f"[CHAPTER]\nTIMEBASE=1/1000\nSTART={int(t * 1000)}\nEND={int((t + d) * 1000)}\n"
+                    f"title={CHAPTERS.get(cls, cls)}\n")
+            print(f"{int(t // 60):02d}:{int(t % 60):02d}  {CHAPTERS.get(cls, cls)}")
+            t += d
     out = os.path.join(ROOT, "dukazy_planimetrie" + ("_nahled" if low else "") + ".mp4")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst,
-                    "-c:v", "copy", "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out],
+                    "-i", meta, "-map_metadata", "1", "-map_chapters", "1",
+                    "-c:v", "copy", "-af", "aresample=async=1:first_pts=0", "-c:a", "aac", "-b:a", "160k", "-ar", "48000", "-movflags", "+faststart", out],
                    check=True)
     print("hotovo:", out)
 
