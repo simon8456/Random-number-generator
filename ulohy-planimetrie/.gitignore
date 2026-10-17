@@ -1,0 +1,6 @@
+audio/
+media/
+__pycache__/
+*.mp4
+tts_log.txt
+texts.json
