@@ -4,3 +4,4 @@ __pycache__/
 *.mp4
 tts_log.txt
 texts.json
+collected_texts.jsonl

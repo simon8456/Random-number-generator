@@ -32,7 +32,7 @@ CHAPTERS = {"Intro": "Úvod a značení", "V42": "V 4.2 Kolmice bodem na přímc
 def render(item, low):
     mod, cls = item
     q = ["-ql"] if low else ["--resolution", "1920,1080", "--frame_rate", "30"]
-    cmd = ["/opt/venv/bin/manim", *q, "--media_dir", MEDIA, os.path.join(ROOT, "scenes", mod + ".py"), cls]
+    cmd = ["/opt/venv/bin/manim", *q, "--disable_caching", "--media_dir", MEDIA, os.path.join(ROOT, "scenes", mod + ".py"), cls]
     r = subprocess.run(cmd, capture_output=True, text=True)
     out = r.stdout + r.stderr
     path = None
@@ -52,8 +52,13 @@ def main():
     jobs = int(os.environ.get("JOBS", "3"))
     only = [a for a in sys.argv[1:] if not a.startswith("--")]
     items = [it for it in ORDER if not only or it[1] in only]
-    with cf.ThreadPoolExecutor(jobs) as ex:
-        res = dict(ex.map(lambda it: render(it, low), items))
+    if "--concat" in sys.argv:          # jen spojit už vyrenderované scény
+        sub = "480p15" if low else "1080p30"
+        res = {it: os.path.join(MEDIA, "videos", it[0], sub, it[1] + ".mp4") for it in ORDER}
+        only = []
+    else:
+        with cf.ThreadPoolExecutor(jobs) as ex:
+            res = dict(ex.map(lambda it: render(it, low), items))
     if only:
         return
     paths = [res.get(it) for it in ORDER]

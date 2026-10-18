@@ -27,7 +27,7 @@ def texts_in(path):
         if not (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)):
             continue
         name = node.func.attr
-        pos = {"say": 0, "intro": 1, "summary": 2}.get(name)
+        pos = {"say": 0, "intro": 1, "summary": 2, "think": 1, "show_roadmap": 2}.get(name)
         if pos is None:
             continue
         if name == "summary":
@@ -59,6 +59,15 @@ if __name__ == "__main__":
             if k not in seen:
                 seen.add(k)
                 items.append({"key": k, "text": norm_text(t), "scene": os.path.basename(f)})
+    # texty zjištěné za běhu (say() s proměnnou) – viz collect_texts.sh
+    coll = os.path.join(ROOT, "collected_texts.jsonl")
+    if os.path.exists(coll):
+        for line in open(coll, encoding="utf-8"):
+            it = json.loads(line)
+            k = audio_key(it["text"])
+            if k not in seen:
+                seen.add(k)
+                items.append({"key": k, "text": norm_text(it["text"]), "scene": it["scene"]})
     json.dump(items, open(os.path.join(ROOT, "texts.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=1)
     have = sum(os.path.exists(os.path.join(ROOT, "audio", i["key"] + ".wav")) for i in items)

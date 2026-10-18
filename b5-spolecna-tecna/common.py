@@ -521,6 +521,9 @@ class ProofScene(Scene):
     # --- synchronizace s komentářem
     @contextmanager
     def say(self, text, pad=0.3):
+        if os.environ.get("COLLECT_TEXTS"):
+            with open(os.environ["COLLECT_TEXTS"], "a", encoding="utf-8") as f:
+                f.write(json.dumps({"text": norm_text(text), "scene": type(self).__name__}, ensure_ascii=False) + "\n")
         path, dur = audio_for(text)
         t0 = self.renderer.time
         if path:

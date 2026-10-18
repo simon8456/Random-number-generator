@@ -27,7 +27,7 @@ def texts_in(path):
         if not (isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute)):
             continue
         name = node.func.attr
-        pos = {"say": 0, "intro": 1, "summary": 2}.get(name)
+        pos = {"say": 0, "intro": 1, "summary": 2, "think": 1, "show_roadmap": 2}.get(name)
         if pos is None:
             continue
         if name == "summary":

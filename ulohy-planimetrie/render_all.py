@@ -23,12 +23,13 @@ CHAPTERS = {"Intro": "Úvod", "A3": "A3 Úhel dvou tětiv", "B3": "B3 Bod uvnit�
 def render(item, low):
     mod, cls = item
     q = ["-ql"] if low else ["--resolution", "1920,1080", "--frame_rate", "30"]
-    cmd = ["/opt/venv/bin/manim", *q, "--media_dir", MEDIA, os.path.join(ROOT, "scenes", mod + ".py"), cls]
+    md = os.path.join(MEDIA, cls)          # vlastní media_dir pro každou scénu (paralelní běhy si nepřepisují cache textů)
+    cmd = ["/opt/venv/bin/manim", *q, "--disable_caching", "--media_dir", md, os.path.join(ROOT, "scenes", mod + ".py"), cls]
     r = subprocess.run(cmd, capture_output=True, text=True)
     out = r.stdout + r.stderr
     path = None
     sub = "480p15" if low else "1080p30"
-    cand = os.path.join(MEDIA, "videos", mod, sub, cls + ".mp4")
+    cand = os.path.join(md, "videos", mod, sub, cls + ".mp4")
     if os.path.exists(cand):
         path = cand
     if r.returncode != 0 or not path:
