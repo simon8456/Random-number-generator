@@ -1,0 +1,1104 @@
+# POSLEDNÍ KONTROLA — scénář (POZOR, SPOILERY!)
+# Formát: "## id set čas" = scéna; "@příkaz" = režie; "JMÉNO [nálada]: replika"; "JMÉNO (vo): vnitřní hlas"
+# Všechny postavy jsou smyšlené.
+
+## 01 prolog night
+@music prolog
+@amb clock
+@seq prolog_map
+@wait 6
+RADIO: Předpověď počasí na noc ze středy na čtvrtek. Na Plzeňsku a Klatovsku se očekává hustá mlha, zejména v údolích a v lesích. Teploty kolem nuly.
+@wait 4
+@sfx pin
+@wait 3
+@sfx pin
+@wait 4
+RADIO: Řidiči, buďte opatrní. V mlze se ztrácí víc věcí, než si myslíte.
+@wait 6
+@sfx whistle
+@wait 6
+@fade out 2
+@music off
+@title "POSLEDNÍ KONTROLA" 7
+@wait 1
+
+## 02 room day
+@music home
+@amb day
+@caption "DEN 1 — PONDĚLÍ" 3
+@cast VIKTOR:bed:0.28 HELENA:stand:0.62:L
+@mood VIKTOR sick
+@sfx thermometer
+HELENA [worried]: Třicet osm a sedm. Viktore, tohle není nachlazení. Doktorka říkala mononukleóza. Minimálně tři týdny doma.
+VIKTOR [sick]: Tři týdny? Mami, za tři týdny je pololetka ze zeměpisu. A noční orienťák. Já ten orienťák chci vyhrát.
+HELENA: Na orienťák zapomeň. Žádný sport, žádná škola, žádný běhání. Při mononukleóze ti může prasknout slezina. Ležet, pít, spát.
+@enter BEATA 0.86 R
+BEATA [sly]: Mě taky bolí v krku. Asi mám taky mononukleózu. Asi musím taky tři týdny doma.
+HELENA: Ty máš v krku leda tak lež, Beato. Batoh, boty, autobus. Hned.
+BEATA [angry]: Viktor má vždycky všechno.
+VIKTOR: Jo. Horečku, slezinu na prasknutí a tři týdny se stropem. Klidně si to vezmi.
+@exit BEATA R
+HELENA: Šimon ti bude nosit úkoly, volala jsem jeho mámě. Já mám dneska noční, takže až budu spát, budeš tichý jako myš. Jasný?
+VIKTOR: Jasný.
+HELENA [happy]: A pij. Hodně pij.
+@exit HELENA R
+@wait 2
+@shot cu VIKTOR
+VIKTOR (vo): Den první. Máma říká, že mononukleóza je nemoc z líbání. Jen tak pro pořádek: já jsem nikoho nelíbal. To je na tom celým asi to nejsmutnější.
+@wait 2
+
+## 03 window day
+@music window
+@seq window_intro
+VIKTOR (vo): Z mýho okna je vidět půlka světa. Teda, půlka Sokolí ulice.
+@wait 1
+VIKTOR (vo): Vlevo bílá vila pana Kříženeckýho. Učí zeměpis. Je to nejoblíbenější učitel na celým gymplu. Vede orienťák, jezdí s námi na hory a nikdy nikoho nenechá propadnout. Prostě ten typ učitele, o kterým se natáčej filmy.
+@wait 1
+VIKTOR (vo): Uprostřed je zadní dvůr naší školy a tělocvična. Tam vládne pan Liškutín. Tělocvikář. Ten typ učitele, o kterým se natáčej horory.
+LISKUTIN [angry]: Brabec! Blaška! Ještě tři kola, nebo vás pošlu k sestře na injekci!
+VIKTOR (vo): Ten s tou veslařskou bundou je Matěj Brabec. Vesluje za klub v Plzni a chce na olympiádu. Vedle něj Pavel Blaška, kapitán našeho orienťáckýho týmu. Ten chce hlavně porazit Matěje.
+@wait 1
+VIKTOR (vo): Vpravo vede cesta do lesa. Tam každý rok běháme noční orienťák. Mlha, čelovky, mapa a buzola. Nejlepší noc v roce.
+@wait 1
+VIKTOR (vo): A úplně dole paní Kunešová se svým psem Bobíkem. Paní Kunešová ví o naší ulici víc než policie, pošta a Google dohromady.
+@wait 2
+@seq binoculars_intro
+VIKTOR (vo): Tohle je dědův dalekohled. Děda byl hajný. Říkával: les ti řekne všechno, když se díváš dost dlouho.
+@wait 2
+VIKTOR (vo): Tak jsem se začal dívat.
+@wait 2
+
+## 04 room day
+@music home
+@caption "DEN 1 — ODPOLEDNE" 3
+@cast VIKTOR:bed:0.28 SIMON:stand:0.66:L
+@mood VIKTOR sick
+@sfx door
+SIMON [happy]: Zásilková služba Pokorný! Máte tady úkoly, sešity, a jedno čerstvě zlomený srdce.
+VIKTOR: Čí srdce?
+SIMON [sad]: Moje. Kubička Zemanová se mě dneska zeptala, jak se máš. Ne jak se mám já. Jak se máš ty.
+VIKTOR [surprised]: Zemanová se ptala na mě?
+SIMON [sly]: Klid, bacile. Asi chtěla vědět, jestli už jsi mrtvej, aby si mohla sednout k oknu.
+VIKTOR [happy]: To je od ní hezký.
+SIMON: Jo, a tohle ti posílá Kříženecký.
+@prop SIMON thermos
+SIMON: Bylinkovej čaj. Prej podle receptu jeho babičky ze Šumavy. Teda, dala mi ho Šebestová ve sborovně, ale je to prej od něj. Vzkazuje: ať se nám Skácel brzo vrátí, bez něj nemám komu dávat jedničky.
+@prop SIMON none
+@prop VIKTOR thermos
+VIKTOR: Kříženecký je fakt borec.
+@sfx sip
+VIKTOR [sick]: Fuj. Chutná to jak seno.
+SIMON: To je zdravý seno. Pij, ať můžeš zase běhat.
+SIMON: A ještě něco. Kříženecký vyhlásil soutěž. Zeměpisná keška týdne. Každej pátek dá na školní web souřadnice a kdo najde krabičku první, má jedničku. Kovář už si koupil GPSku za tři tisíce.
+VIKTOR: Kovář? Ten nenajde ani vlastní boty.
+SIMON: Já vím. Proto to bude zábava. Oleksii se s ním kvůli tomu málem porval na chodbě. Že prej Kovář podvádí ještě dřív, než to začalo.
+VIKTOR [happy]: To je celej Oleksii. Nejdřív bouchne, pak se ptá.
+SIMON: Hele, musím na trénink. Liškutín říkal, že kdo nepřijde, bude tahat švédskou bednu zubama.
+@exit SIMON R
+@prop VIKTOR none
+@wait 1
+VIKTOR (vo): Den první, večer. Pozorování: Šimon chodí rychleji, když lže. Dneska chodil hodně rychle, když mluvil o Zemanový.
+@wait 2
+
+## 05 window night
+@music suspense1
+@amb rain
+@caption "DEN 1 — 21:47" 3
+@seq bike_garage
+@wait 3
+VIKTOR (vo): Den první, devět čtyřicet sedm. Matěj Brabec jde z tréninku. Vede kolo. Prší.
+@wait 3
+VIKTOR (vo): U vily ho zastavuje pan Kříženecký. Smějou se. Kříženecký mu ukazuje na garáž.
+@wait 5
+VIKTOR (vo): Matěj tam vede kolo. Dveře garáže se zavírají.
+@sfx garage_close
+@wait 6
+VIKTOR (vo): Asi mu půjčuje nějakou mapu. Nebo pumpičku. Kříženecký pomáhá každýmu.
+@wait 3
+@fade out 1
+@seq clock_2310
+@sfx clock_tick
+@wait 3
+@seq garage_hose
+VIKTOR (vo): Jedenáct deset. Probudil jsem se. V garáži se svítí. Pan Kříženecký stříká hadicí podlahu. V jedenáct v noci.
+@wait 5
+VIKTOR (vo): Matějovo kolo jsem neviděl. Matěje taky ne.
+@wait 3
+VIKTOR (vo): Nic divnýho. Kdo by v jedenáct v noci nestříkal garáž.
+@wait 3
+
+## 06 room day
+@music home
+@amb day
+@caption "DEN 3 — STŘEDA" 3
+@cast VIKTOR:bed:0.28 SIMON:stand:0.66:L
+@mood VIKTOR sick
+SIMON [worried]: Brabec chybí už druhej den. Ředitel nám dneska rozeslal mail. Koukej.
+@seq phone_mail_brabec
+@wait 3
+VIKTOR (vo): Vážení studenti. Matěj Brabec ze druhého A se z rodinných důvodů nečekaně přestěhoval k otci do Anglie. Přejeme mu mnoho úspěchů. S pozdravem a přáním klidných dnů, vedení školy.
+@wait 2
+@seq none
+VIKTOR [surprised]: Do Anglie? Bez rozloučení? Matěj nesnáší angličtinu. Má z ní čtyřku.
+SIMON: Láska k tátovi je silnější než čtyřka.
+VIKTOR: A co veslování? Za měsíc má mistrovství republiky. Na to se chystal dva roky.
+SIMON: Tak pojede za Anglii. Hele, nevím. Liškutín byl dneska úplně mimo. Prej mu Matěj nic neřekl.
+VIKTOR [worried]: Šimone. Já ho viděl. V pondělí večer. Šel s kolem ke Kříženeckýmu do garáže. A už nevyšel.
+SIMON: Nevyšel? Nebo jsi ho neviděl vyjít? Ty spíš osmnáct hodin denně.
+@wait 2
+VIKTOR: Neviděl jsem ho vyjít.
+SIMON: Tak vidíš. Kříženecký je nejhodnější člověk na škole. Minulej rok vezl Oleksiiho do nemocnice, když si zlomil ruku na lyžáku. Vlastním autem, sto kilometrů.
+VIKTOR: Já vím. Podívej se z okna.
+@seq binoculars_bike
+@sfx focus
+@wait 3
+VIKTOR (vo): Dveře garáže jsou pootevřený. Pod plachtou je kolo. Červený. Na rámu nálepka.
+@wait 3
+SIMON [worried]: To může bejt jakýkoli kolo.
+VIKTOR: S nálepkou veslařskýho klubu Plzeň?
+@wait 2
+@seq none
+@shot two SIMON VIKTOR
+SIMON: Viktore. Na tohle nemáš ani zdaleka dost důkazů. A Kříženeckýho mají všichni rádi. Kdyby ses mýlil, pohřbíš sám sebe.
+VIKTOR: A když se nemýlím?
+@wait 2
+SIMON: Pij ten čaj. A spi.
+@exit SIMON R
+@wait 2
+
+## 07 sborovna day
+@music school
+@amb room
+@caption "GYMNÁZIUM — SBOROVNA" 3
+@cast HRUBAN:stand:0.18:R LISKUTIN:stand:0.34:R SEBESTOVA:sit:0.52:L KRIZENECKY:stand:0.68:L VAREJKA:sit:0.84:L
+@shot wide
+HRUBAN [worried]: Kolegové, k tomu Brabcovi. Hlavně ať se to nerozkřikne. Víte, jak jsou rodiče citliví. A za dva týdny máme inspekci.
+LISKUTIN [angry]: Takovej talent. Dva roky ho chystám na republiku, a najednou Anglie? Mně neřekl ani slovo. Ani ahoj.
+SEBESTOVA [sad]: Já s jeho maminkou včera mluvila. Je to pro rodinu těžké období, ale všechno je v pořádku. Nechme je být.
+KRIZENECKY [happy]: Kluci v tomhle věku potřebují tátu, Bohoušu. Ty bys to měl vědět nejlíp. Bude mu líp tam, kde ho mají rádi.
+LISKUTIN: Já ho měl taky rád. Jen jsem na něj řval.
+@enter BOUCNIK 0.06 L
+BOUCNIK [worried]: Pane řediteli, promiňte. Papíry k Brabcovu přestupu mi ještě nikdo nedal. Bez nich ho nemůžu vyřadit z matriky.
+HRUBAN: Pane Boucník, papíry počkají. Hlavně klid.
+BOUCNIK: Papíry nikdy nepočkají, pane řediteli. Papíry jsou jediný, co tady po nás zůstane.
+@exit BOUCNIK L
+@shot cu VAREJKA
+VAREJKA [n]: Radovane. Vy jste přece taky učil v Sušici, ne? Tam se taky jednou jeden kluk odstěhoval. Hodně rychle.
+@shot cu KRIZENECKY
+KRIZENECKY [happy]: Pane profesore, já jsem učil na tolika školách, že si to nepamatuju ani já. Kafe?
+VAREJKA: Děkuju. Já už kafe nepiju. Já si radši pamatuju.
+@shot wide
+@exit HRUBAN L
+@exit LISKUTIN L
+@exit SEBESTOVA L
+@exit VAREJKA R
+@wait 1
+@shot cu KRIZENECKY
+@mood KRIZENECKY n
+@sfx coffee
+@sfx whistle
+@wait 5
+@fade out 1
+
+## 08 window night
+@music suspense2
+@amb night
+@caption "DEN 3 — NOC" 3
+@seq liskutin_fire
+VIKTOR (vo): Den třetí, půl dvanáctý. Za tělocvičnou se něco děje.
+@wait 3
+VIKTOR (vo): Pan Liškutín. Táhne velkej černej pytel. Hází ho do starýho sudu. A zapaluje ho.
+@sfx fire
+@wait 4
+VIKTOR (vo): Co se pálí v noci za školou? Liškutín řval na Matěje každej den. Matěj ho nesnášel.
+@wait 3
+VIKTOR (vo): Ne. Teď mám podezřelý dva?
+@wait 3
+@seq car_forest
+@sfx car_start
+VIKTOR (vo): Jedna hodina pět minut. Z vily vyjíždí auto pana Kříženeckýho. Bez světel. Do lesa.
+@wait 6
+@sfx owl
+VIKTOR (vo): Dvě hodiny čtyřicet. Vrací se. Rozsvítí až u garáže. Vyndavá z kufru lopatu. Je celá od bláta.
+@wait 5
+VIKTOR (vo): Kdo jezdí ve dvě ráno do lesa s lopatou? Houbaři v listopadu?
+@wait 3
+
+## 09 room day
+@music tension_soft
+@amb day
+@caption "DEN 5 — PÁTEK" 3
+@cast VIKTOR:bed:0.28
+@mood VIKTOR sick
+@seq laptop_cache
+@wait 2
+VIKTOR (vo): Zeměpisná keška týdne číslo čtyři. Severní šířka čtyřicet devět stupňů, třicet šest celá dva jedna čtyři. Východní délka třináct stupňů, dvanáct celá osm osm jedna. Nápověda: Kde voda spí pod kamenem.
+@wait 3
+@seq map_cache
+VIKTOR (vo): Starý lom za lesem. Zatopená jáma. Přesně tím směrem jel v noci Kříženecký.
+@wait 4
+@seq phone_chat_cache
+@sfx notify
+KOVAR [happy]: Mám kešku číslo čtyři! Jednička je moje, frajeři!
+@sfx notify
+OLEKSII [angry]: Kovář podvádí. Já tam byl první, jen jsem neměl signál.
+@sfx notify
+PAZDERA: Gratuluji. Mimochodem, ta krabička je ruská vojenská muniční bedna, model z roku sedmdesát čtyři.
+@sfx notify
+ZEMANOVA: Kluci, uklidněte se. Co v ní bylo?
+@sfx notify
+KOVAR [happy]: Tohle. Je to hnusný, ale je to trofej.
+@wait 1
+@seq phone_photo_keychain
+@sfx focus
+@wait 3
+VIKTOR (vo): Klíčenka. Malý stříbrný veslo. Veslařský klub Plzeň.
+@wait 2
+@seq flash_keychain
+@sfx hit
+VIKTOR (vo): Matěj ji nosil na batohu. Každej den.
+@wait 2
+@seq none
+@shot cu VIKTOR
+@mood VIKTOR scared
+VIKTOR (vo): Matějova klíčenka. V krabičce, kterou tam schoval Kříženecký. On se nebojí. On si hraje.
+@wait 3
+
+## 10 videocall day
+@music tension_soft
+@caption "DEN 5 — ODPOLEDNE" 3
+@seq videocall_sebestova
+SEBESTOVA [happy]: Viktore, ahoj. Slyšíš mě? Tak, tvoje slohová práce. Musím říct, že je to nejlepší úvaha, jakou jsem letos četla. Napsala jsem ti tam pár poznámek.
+VIKTOR: Děkuju, paní profesorko.
+SEBESTOVA: Přečtu ti konec. Skvělá práce, Viktore. Uzdrav se. S pozdravem a přáním klidných dnů, J. Š.
+VIKTOR [worried]: Paní profesorko, můžu se vás na něco zeptat? Ale musí to zůstat mezi námi.
+SEBESTOVA [worried]: Samozřejmě. Co se děje?
+VIKTOR: Já myslím, že Matěj Brabec není v Anglii. Viděl jsem ho jít do garáže pana Kříženeckýho. A už nevyšel. Pak jsem viděl jeho kolo. A dneska Kovář našel v kešce jeho klíčenku. V kešce od Kříženeckýho.
+@wait 3
+SEBESTOVA [n]: Viktore. To je hodně vážné obvinění.
+VIKTOR: Já vím.
+SEBESTOVA [worried]: Poslouchej mě dobře. Slib mi, že to zatím nikomu dalšímu neřekneš. Ani Šimonovi, ani mamince. Já to prověřím. Opatrně a potichu. Kdyby ses mýlil, zničilo by to jednomu člověku celý život.
+VIKTOR: Slibuju.
+SEBESTOVA [happy]: Hodný. A Viktore? Pij ten čaj. Musíš se nám uzdravit.
+@sfx call_end
+@seq videocall_frozen
+@wait 3
+@seq none
+
+## 11 window night
+@music suspense1
+@amb rain
+@caption "DEN 8 — PONDĚLÍ, 19:32" 3
+@seq red_car
+VIKTOR (vo): Den osmý, sedm třicet dva. Autobusová zastávka u školy. Kryštof Mlejnek z áčka. Tichej kluk, hraje šachy, s nikým moc nemluví.
+@wait 3
+VIKTOR (vo): Zastavuje u něj malý červený auto. Kryštof se naklání k okýnku. Usmívá se. Nastupuje.
+@sfx car_door
+@wait 3
+@seq binoculars_plate
+@sfx focus
+VIKTOR (vo): Řidiče nevidím. SPZ. Tři P. Zbytek je od bláta.
+@wait 3
+@seq red_car_leave
+@wait 3
+VIKTOR (vo): Odjíždí. Ne k vile. Do lesa.
+@wait 4
+VIKTOR (vo): Asi ho jen někdo veze domů. Asi.
+@wait 3
+
+## 12 room day
+@music tension_soft
+@amb day
+@caption "DEN 9 — ÚTERÝ" 3
+@cast VIKTOR:bed:0.28 SIMON:stand:0.62:L
+@mood VIKTOR sick
+SIMON [worried]: Kryštof Mlejnek dneska nepřišel. A přišel další mail. Prej odjel na dlouhodobej studijní pobyt do Kanady. Uprostřed pololetí.
+VIKTOR: S pozdravem a přáním klidných dnů?
+SIMON [surprised]: Jak to víš?
+VIKTOR: Šimone, poslouchej. Slíbil jsem, že to nikomu neřeknu, ale už jsou dva.
+@shot two VIKTOR SIMON
+VIKTOR: Kryštofa jsem včera viděl nastoupit do červenýho auta. Tady u zastávky. Auto jelo do lesa. A v noci jezdí do lesa Kříženecký. S lopatou. A Liškutín pálí za tělocvičnou pytle. A Kovář našel v kešce Matějovu klíčenku.
+@wait 2
+SIMON [scared]: Dobře. Dobře. Řekněme, že máš pravdu. Co chceš dělat? Jít na policii s deníkem, horečkou a dědovým dalekohledem?
+VIKTOR: Potřebuju důkaz. Někdo se musí podívat do tý garáže.
+SIMON: Já ne. Já mám alergii na smrt. Fakt, mám to v papírech.
+@enter BEATA 0.88 R
+BEATA [sly]: Já to udělám.
+VIKTOR [angry]: Beato! Ty posloucháš za dveřma?
+BEATA: Celej tejden. Jsi nejlepší seriál, co kdy běžel.
+SIMON: Ne. Ne, ne, ne. Je jí devět.
+BEATA [angry]: Skoro deset. A jsem malá. Malý lidi se všude vejdou. A Bobík od paní Kunešový pořád utíká do zahrady k panu učiteli. Když ho půjdu hledat, nikdo se nebude divit.
+@wait 2
+VIKTOR [worried]: Ve čtvrtek odpoledne má Kříženecký pedagogickou radu. Dvě hodiny. Klíč od zadních dveří garáže schovává pod kytkou. Viděl jsem ho.
+SIMON [scared]: Vy jste se oba zbláznili.
+BEATA [happy]: Konečně se v tomhle baráku něco děje.
+@wait 2
+
+## 13 window day
+@music garage
+@amb day
+@caption "DEN 11 — ČTVRTEK, 14:05" 3
+@seq garage_approach
+@sfx car_start
+VIKTOR (vo): Dvě hodiny pět minut. Kříženecký odjíždí na poradu.
+@wait 3
+VIKTOR: Beato, slyšíš mě? Auto je pryč. Teď.
+BEATA (vo): Slyším. Bobíku, ke mně!
+@sfx dog
+@wait 3
+VIKTOR: Kytka vlevo od dveří. Klíč je pod ní.
+@sfx key
+@wait 2
+BEATA (vo): Mám ho. Jdu dovnitř.
+@sfx door_creak
+@wait 2
+
+## 14 garage night
+@music garage
+@amb garage
+@cast BEATA:stand:0.15:R
+@fx flashlight
+@shot wide
+@move BEATA 0.4 4
+BEATA [scared]: Je tu tma. Smrdí to tu chlórem.
+VIKTOR (vo): Co vidíš?
+@seq garage_map
+@wait 3
+BEATA (vo): Na zdi je velká mapa. Plná červenejch špendlíků. U každýho je malá vlaječka. Písmenka. M. B. K. M. A spousta dalších. Starý.
+VIKTOR (vo): Vyfoť to. Všechno.
+@sfx camera
+@wait 1
+@sfx camera
+@wait 1
+@seq none
+@shot wide
+@move BEATA 0.65 3
+BEATA (vo): A je tu kolo. Pod plachtou. Červený. S nálepkou.
+@sfx camera
+@wait 2
+BEATA (vo): A velká mrazicí truhla. Bzučí.
+@sfx freezer
+@wait 3
+VIKTOR (vo): Beato. Neotvírej ji.
+@wait 2
+VIKTOR (vo): Počkej. Auto. Auto se vrací! Beato, ven! Hned!
+@sfx car_start
+@music chase
+@shot cu BEATA
+@mood BEATA scared
+BEATA [scared]: Já nemůžu, už je u vrat!
+VIKTOR (vo): Schovej se! Za truhlu!
+@move BEATA 0.82 1
+@pose BEATA crouch
+@sfx garage_open
+@enter KRIZENECKY 0.12 L 2
+@shot wide
+@wait 2
+@move KRIZENECKY 0.5 4
+@sfx whistle
+@wait 4
+@move KRIZENECKY 0.7 2
+@sfx freezer_open
+@shot cu BEATA
+@wait 3
+@shot cu KRIZENECKY
+@mood KRIZENECKY happy
+KRIZENECKY [happy]: Tak. Vanilková. Neboj, ty na mě nezapomeneš.
+@sfx freezer_close
+@wait 2
+@mood KRIZENECKY n
+@shot wide
+@wait 2
+KRIZENECKY [n]: Zadní dveře. Pootevřené.
+@wait 2
+KRIZENECKY [sly]: Je tu někdo?
+@wait 3
+@sfx dog
+@sfx dog
+KRIZENECKY: Zase ten pes.
+@exit KRIZENECKY L 3
+@wait 1
+@move BEATA 0.3 2
+@exit BEATA L 2
+@wait 1
+@enter KRIZENECKY 0.25 L 2
+@prop KRIZENECKY hairclip
+@shot cu KRIZENECKY
+@mood KRIZENECKY sly
+@wait 4
+@sfx whistle
+@wait 3
+@fade out 1
+
+## 15 room day
+@music tension_soft
+@amb day
+@cast VIKTOR:bed:0.28 BEATA:stand:0.6:L
+@mood VIKTOR sick
+BEATA [scared]: Myslíš, že mě viděl?
+VIKTOR: Ne. Kdyby tě viděl, nepustil by tě.
+@wait 1
+BEATA: To je hrozný, co říkáš.
+VIKTOR [worried]: Já vím. Ukaž mi ty fotky.
+@seq phone_photo_map
+@wait 4
+VIKTOR (vo): Špendlíky. Desítky. Některý staré, zrezlé. U každýho vlaječka. M. B. K. M. A jeden prázdný. Nový. Bez písmen. Čeká.
+@wait 3
+@seq none
+VIKTOR: Pošlu to paní Šebestový. Ona ví, co s tím. Slíbila, že to prověří.
+@wait 1
+BEATA [worried]: Viktore. Ztratila jsem sponu. Tu růžovou s hvězdou.
+@wait 2
+VIKTOR: Kde?
+BEATA: Nevím.
+@wait 3
+@fade out 1
+
+## 16 hall day
+@music tension_soft
+@amb room
+@caption "DEN 12 — PÁTEK" 3
+@cast VIKTOR:stand:0.2:R HELENA:stand:0.4:R BURES:stand:0.72:L
+@mood VIKTOR sick
+BURES [n]: Paní Skácelová, já se omlouvám, že ruším. Praporčík Bureš, obvodní oddělení. Ozvala se nám škola. Prý tu máme mladého detektiva.
+HELENA [surprised]: Detektiva?
+BURES: Pan Kříženecký nás sám pozval do své garáže. Byli jsme tam dnes ráno. Ta mapa na zdi je mapa kontrol na noční orientační závod. Špendlíky jsou kontroly. Písmena na vlaječkách jsou iniciály dobrovolníků, kteří je hlídají.
+VIKTOR [angry]: A to kolo?
+BURES: Kolo patří jeho synovci. Klíčenky s veslem prodávají v každém sportovním obchodě v Plzni. A ti dva kluci jsou v Anglii a v Kanadě, škola má od rodičů písemné potvrzení.
+VIKTOR: Viděl jste to potvrzení? Vy osobně?
+BURES [angry]: Mladý muži. Já tady nejsem kvůli tomu potvrzení. Já jsem tady kvůli tomu, že někdo poslal devítiletou holčičku vloupat se do cizího domu.
+@mood HELENA angry
+HELENA [angry]: Cože? Viktore. Ty jsi poslal sestru do cizí garáže?
+VIKTOR [scared]: Mami, já…
+BURES: Pan učitel nechce nic podávat. Říkal, že chápe, že má Viktor vysoké horečky a moc času. Ale tohle se nesmí opakovat. Rozumíme si?
+VIKTOR: Rozumíme.
+BURES [n]: Tady je moje číslo. Kdyby něco. Opravdu něco. Ne kola.
+@prop BURES card
+@exit BURES R
+@wait 1
+@sfx doorbell
+@wait 1
+@enter KRIZENECKY 0.75 R
+@prop KRIZENECKY flowers
+KRIZENECKY [happy]: Paní Skácelová, dobrý den. Nezlobte se, já se vůbec nezlobím. Přinesl jsem jen pár mandarinek. Pro nemocného.
+HELENA [sad]: Pane profesore, mně je to tak strašně trapné. Já nevím, co mám říct.
+KRIZENECKY [happy]: Nic neříkejte. Viktor je bystrý kluk. Možná nejbystřejší ve třídě. Jen má moc času a vysokou teplotu. To bych v jeho věku taky viděl vrahy všude.
+@enter BEATA 0.55 R
+@prop KRIZENECKY hairclip
+@shot cu KRIZENECKY
+KRIZENECKY [sly]: A ty jsi Beatka. Myslím, že tohle je tvoje, slečno. Našel jsem to u sebe v garáži. Na podlaze. Hned u mrazáku.
+@shot cu BEATA
+@mood BEATA scared
+@wait 3
+@shot wide
+@prop KRIZENECKY none
+@move KRIZENECKY 0.35 2
+@shot cu KRIZENECKY
+KRIZENECKY [n]: Brzy se uzdrav, Skácel. Bez tebe ta třída není ono. Hlídej si zdraví. A sestru.
+@exit KRIZENECKY R 3
+@sfx whistle
+@wait 3
+@shot cu VIKTOR
+@mood VIKTOR scared
+VIKTOR (vo): Věděl to. Věděl to dřív, než přišla policie. Někdo mu to řekl.
+@wait 3
+@fade out 2
+
+## 17 dream night
+@music dream
+@amb none
+@seq fever_dream
+@wait 3
+KRIZENECKY (vo): Víš, co je na mapách krásné, Skácel? Všechno je na nich malé.
+@wait 3
+SEBESTOVA (vo): Pij ten čaj, Viktore. Musíš se nám uzdravit.
+@wait 3
+SIMON (vo): Je to zdravý seno. Pij. Pij. Pij.
+@wait 3
+KRIZENECKY (vo): Lidi na mapě nejsou. Jenom místa.
+@wait 4
+BEATA (vo): Viktore! Viktore, probuď se!
+@sfx hit
+@wait 1
+@seq window_man
+@music suspense2
+@amb night
+@wait 3
+VIKTOR (vo): Tři hodiny ráno. Někdo stojí na zahradě vily. Dívá se přímo nahoru. Na moje okno.
+@wait 4
+@sfx heartbeat
+VIKTOR (vo): Zvedá ruku. Pomalu. Mává mi.
+@wait 4
+@seq window_empty
+@sfx hit
+@wait 3
+VIKTOR (vo): Je pryč. Nebo tam nikdy nebyl?
+@wait 3
+
+## 18 lab night
+@music hospital
+@amb hospital
+@caption "NEMOCNICE KLATOVY — NOČNÍ SMĚNA" 3
+@cast HELENA:stand:0.35:R FIALA:stand:0.66:L
+FIALA [worried]: Heleno, to jsou výsledky tvýho syna? Ten krevní obraz sedí na mononukleózu. Ale ty rozšířený zorničky, halucinace a tachykardie, to k tomu nepatří.
+HELENA [worried]: Ve dne spí a v noci vidí lidi na zahradě. Myslela jsem, že je to horečkou.
+FIALA: Poslala jsem to na toxikologii. Máš to tady. Alkaloidy. Atropin, skopolamin. V malých dávkách, ale pravidelně. Někdo, nebo něco, ho otravuje. Vypadá to na durman.
+HELENA [scared]: Durman?
+FIALA: Způsobuje zmatenost, paranoiu, přeludy. Člověk vidí věci, který nejsou. Když se to dá do jídla, nikdo na to nepřijde. Heleno. Co ten kluk jí a pije?
+@wait 2
+@shot cu HELENA
+@mood HELENA scared
+HELENA [scared]: Čaj. Bylinkovej čaj. Každej den.
+@wait 2
+@fade out 1
+
+## 19 room day
+@music drama
+@amb day
+@caption "DEN 13 — SOBOTA" 3
+@cast VIKTOR:bed:0.28 HELENA:stand:0.5:L SIMON:stand:0.78:L
+@mood VIKTOR sick
+@prop HELENA thermos
+HELENA [angry]: Šimone. Odkud je ten čaj?
+SIMON [surprised]: Dobrý den, paní Skácelová. Od pana Kříženeckýho. Proč?
+HELENA: Protože v něm je jed. Durman. Viktor ho pije dva týdny.
+@wait 2
+SIMON [scared]: Cože? To… to není možný.
+VIKTOR [angry]: Ty jsi to věděl?
+SIMON: Co?
+VIKTOR [angry]: Celou dobu mi to nosíš! Každej den! Pij, Viktore, je to zdravý seno! Kolik ti zaplatil? Nebo ti slíbil jedničku?
+SIMON [angry]: Ty si fakt myslíš, že bych tě otrávil?
+VIKTOR: Já už nevím, co si mám myslet!
+SIMON [sad]: Dva tejdny ti nosím sešity. Píšu za tebe zápisy. Kryju tě před Liškutínem. Poslouchám tvoje teorie o vrazích, i když se mi z toho dělá blbě. A ty…
+HELENA [n]: Šimone, myslím, že bys měl jít. Než se tohle vyjasní, sem chodit nebudeš.
+@wait 2
+SIMON [sad]: Víš co, Viktore? Možná máš pravdu, že na škole je vrah. Ale nejsem to já. A kamaráda jsi právě ztratil úplně sám.
+@exit SIMON R 3
+@sfx door
+@wait 2
+@shot two HELENA VIKTOR
+HELENA [sad]: A Viktore. Ten durman způsobuje přeludy. Člověk vidí lidi, který tam nejsou. Možná ten pán na zahradě. Možná to kolo. Možná všechno.
+VIKTOR [sad]: Mami. Ty mi nevěříš?
+HELENA: Já ti věřím, že tě někdo otrávil. Zbytek nevím.
+@exit HELENA R 3
+@wait 2
+@shot cu VIKTOR
+@mood VIKTOR sad
+@music sad
+VIKTOR (vo): Den třináctý. Co když jsem si to všechno vymyslel? Co když je Matěj opravdu v Anglii? A Kryštof v Kanadě? A já jsem jen kluk s otrávenou hlavou, kterej ztratil nejlepšího kamaráda.
+@wait 3
+@seq doubt_montage
+@wait 7
+@seq none
+@wait 2
+@fade out 2
+
+## 20 kunes day
+@music hope
+@amb room
+@caption "DEN 14 — NEDĚLE" 3
+@cast VIKTOR:sit:0.3:R KUNESOVA:sit:0.66:L
+@mood VIKTOR sick
+KUNESOVA [n]: Tak jsem ti přinesla polívku, chlapče. Slepičí. Žádný bylinky, neboj, jenom slepice a mrkev. Slepice se ještě nikdo neotrávil.
+VIKTOR: Děkuju, paní Kunešová.
+KUNESOVA: A teď ti něco řeknu. Já nespím. Od roku osmdesát devět nespím. Sedím u okna a koukám. A zapisuju si to.
+@prop KUNESOVA notebook
+@seq kunes_notebook
+@wait 3
+KUNESOVA (vo): Pondělí, devět čtyřicet sedm. Kluk s červeným kolem jde k učiteli do garáže. Nevyšel. Čtvrtek, sedm třicet dva. O tejden později, pondělí, sedm třicet dva. Kluk s brýlemi nastoupil u zastávky do červeného auta. Auto do lesa.
+@wait 2
+@seq none
+KUNESOVA [n]: Nejsi blázen, Viktore. Ty jsi viděl to samý, co já. A já žádnej čaj nepiju. Já piju slivovici.
+VIKTOR [happy]: Paní Kunešová, já bych vás nejradši objal.
+KUNESOVA: Neobjímej mě, máš tu nemoc z líbání. A poslouchej. To červený auto. Každej čtvrtek parkuje u školy. Na místě pro učitele.
+VIKTOR [surprised]: Pro učitele?
+KUNESOVA [sly]: Pro učitelku. Tak mi to aspoň řekl Bobík.
+@wait 2
+@mood VIKTOR worried
+VIKTOR (vo): Učitelka. Červený auto. A Kříženecký věděl o Beatě dřív, než přišla policie.
+@wait 3
+@seq phone_chat_pazdera
+@sfx notify
+VIKTOR: Pazdero, potřebuju chemika. Máma má doma termosku s tím čajem. Nechám ti ji u paní Kunešový. Zítra ji vezmi Chovancový.
+@sfx notify
+PAZDERA: Chemik je nejpřesnější slovo, jaký mi kdy kdo řekl. Beru to.
+@wait 2
+@seq none
+
+## 21 chemlab day
+@music investigation
+@amb room
+@caption "DEN 15 — LABORATOŘ CHEMIE" 3
+@cast PAZDERA:stand:0.3:R CHOVANCOVA:stand:0.62:L
+@prop PAZDERA thermos
+PAZDERA [n]: Paní profesorko, mám tady vzorek. Mohla byste udělat test na tropanové alkaloidy? Ideálně tenkovrstvou chromatografii.
+CHOVANCOVA [surprised]: Pazdero, ty jsi jediný student, kterému bych tuhle větu věřila. Odkud to je?
+PAZDERA: To je na dlouho, paní profesorko.
+CHOVANCOVA: Tak mi to řekni na krátko.
+@prop PAZDERA none
+@seq chem_test
+@sfx bubble
+@wait 4
+@seq none
+CHOVANCOVA [worried]: Durman obecný. Semena, nadrcená. Tohle by uspalo koně, kdyby to pil měsíc. Pazdero. Kdo to pije?
+PAZDERA: Viktor Skácel. Je to čaj, co mu posílal pan Kříženecký.
+@wait 2
+CHOVANCOVA [scared]: Radovan? To není možné.
+PAZDERA: Statisticky je možné všechno, paní profesorko. Otázka je jen, s jakou pravděpodobností.
+CHOVANCOVA [angry]: Jdu za ředitelem. Hned. A ty, Pazdero, nikomu ani slovo. Rozumíš?
+PAZDERA: Rozumím. Já stejně s nikým nemluvím.
+@exit CHOVANCOVA R 2
+@wait 2
+
+## 22 archive day
+@music investigation
+@amb room
+@caption "GYMNÁZIUM — ARCHIV" 3
+@cast BOUCNIK:sit:0.32:R VAREJKA:stand:0.64:L
+VAREJKA [n]: Pane Boucník, potřeboval bych od vás jednu laskavost. Takovou, kterou nikdo nesmí vidět.
+BOUCNIK [n]: Pane profesore, v tomhle archivu je čtyřicet let laskavostí, který nikdo nesmí vidět. Jednu přidám.
+VAREJKA: Osobní spis Radovana Kříženeckého. Kde všude učil. A kdo odešel s ním.
+@sfx paper
+@seq archive_file
+@wait 3
+BOUCNIK (vo): Gymnázium Sušice. Gymnázium Domažlice. Gymnázium Tachov. A my. Na každý škole tři, čtyři roky. A na každý škole jeden, dva studenti odstěhovaní. Do zahraničí. Bez papírů.
+@wait 3
+VAREJKA (vo): Sušice. Pamatuju si to. Dva kluci zmizeli na školním výletě v lese. Nikdy je nenašli. Policie to zavřela jako útěk z domova.
+@wait 2
+@seq none
+BOUCNIK [worried]: A ještě něco, pane profesore. Na všech čtyřech školách s ním učila tatáž kolegyně. Odešla vždycky ve stejný rok jako on.
+VAREJKA: Kdo?
+BOUCNIK: Jarmila Šebestová. Rozená…
+@sfx paper
+@wait 2
+BOUCNIK [scared]: Rozená Kříženecká.
+@wait 2
+@shot cu VAREJKA
+VAREJKA [scared]: Jeho sestra.
+@wait 3
+@fade out 1
+
+## 23 window night
+@music suspense2
+@amb night
+@caption "DEN 15 — 20:10" 3
+@seq office_silhouettes
+VIKTOR (vo): Den patnáctý, osm deset večer. Ve škole se svítí jen v ředitelně. Ředitel Hruban. A někdo vysoký.
+@wait 3
+VIKTOR (vo): Hádají se. Ředitel ukazuje na dveře. Ten druhý se nehýbe.
+@wait 4
+@sfx shout
+@wait 1
+@seq office_dark
+@sfx hit
+@wait 3
+VIKTOR (vo): Světlo zhaslo.
+@wait 5
+VIKTOR (vo): Nikdo nevyšel hlavním vchodem. Nikdo.
+@wait 4
+@fade out 2
+
+## 24 room day
+@music drama
+@amb day
+@caption "DEN 16 — ÚTERÝ" 3
+@cast VIKTOR:bed:0.28
+@mood VIKTOR worried
+@seq phone_mail_hruban
+@sfx notify
+@wait 3
+VIKTOR (vo): S hlubokým zármutkem oznamujeme, že pan ředitel Zdeněk Hruban včera večer tragicky zahynul po nešťastném pádu ze schodiště ve škole. Výuka je dnes zrušena. Zastupující ředitel Mgr. Přikryl. S pozdravem a přáním klidných dnů.
+@wait 3
+@seq none
+@shot cu VIKTOR
+@mood VIKTOR scared
+VIKTOR (vo): S pozdravem a přáním klidných dnů.
+@wait 2
+VIKTOR (vo): Kde jsem to slyšel? Kde jsem to slyšel?
+@seq flash_essay
+@sfx hit
+SEBESTOVA (vo): Skvělá práce, Viktore. Uzdrav se. S pozdravem a přáním klidných dnů, J. Š.
+@wait 2
+@seq flash_redcar
+@sfx hit
+KUNESOVA (vo): Pro učitelku.
+@seq flash_promise
+@sfx hit
+SEBESTOVA (vo): Slib mi, že to nikomu dalšímu neřekneš. Ani Šimonovi, ani mamince.
+@seq flash_tea
+@sfx hit
+SIMON (vo): Teda, dala mi ho Šebestová ve sborovně, ale je to prej od něj.
+@seq none
+@wait 2
+@shot cu VIKTOR
+VIKTOR (vo): Šebestová. Jediná, komu jsem to řekl. Jediná, komu jsem poslal fotky. Píše maily za školu. Jezdí červeným autem. A dávala Šimonovi ten čaj.
+@wait 2
+VIKTOR (vo): Celou dobu jsem se díval na špatnej dům.
+@wait 3
+@sfx doorbell
+@wait 1
+
+## 25 hall day
+@music hope
+@amb room
+@cast VIKTOR:stand:0.3:R SIMON:stand:0.7:L
+@mood VIKTOR sick
+@mood SIMON sad
+SIMON [sad]: Ahoj. Tvoje máma je v práci, tak jsem… přinesl jsem ti sešit z dějáku. Bez čaje.
+@wait 2
+VIKTOR [sad]: Šimone. Promiň. Byl jsem úplnej idiot.
+SIMON: Jo. Byl.
+VIKTOR: Ten čaj. Kdo ti ho dával? Přesně.
+SIMON [n]: Šebestová. Každý ráno ve sborovně. Říkala, že ho Kříženecký nechal u ní, ať ti ho předám. Já ho od Kříženeckýho do ruky nikdy nedostal. Ani jednou.
+VIKTOR: Ona je s ním. Šimone, ona je s ním. Ona to celou dobu věděla. Já jsem jí všechno řekl a ona mu to hned donesla.
+@wait 2
+SIMON [scared]: Šebestová? Ta, co nám nosí na Vánoce perníčky?
+VIKTOR: A píše ty maily. S pozdravem a přáním klidných dnů.
+@sfx phone
+@prop VIKTOR phone
+VIKTOR: Pazdera. Volá Pazdera.
+PAZDERA (vo): Viktore. Chovancová potvrdila durman. Šla to včera večer říct řediteli. A ředitel je mrtvý. A Vařejka s Boucníkem něco našli v archivu. Šebestová je Kříženeckého sestra.
+@wait 2
+SIMON [scared]: Sestra?
+@prop VIKTOR none
+@shot two VIKTOR SIMON
+VIKTOR: Šimone. Odpustíš mi?
+SIMON [happy]: Až to přežijeme. Pak ti odpustím. Možná.
+@wait 2
+
+## 26 room night
+@music investigation
+@amb night
+@caption "DEN 16 — VEČER" 3
+@cast VIKTOR:sit:0.3:R SIMON:sit:0.55:L BEATA:stand:0.78:L
+@mood VIKTOR worried
+@seq photo_overlay
+@wait 2
+VIKTOR (vo): Beatina fotka mapy. Položil jsem ji přes mapu okolí. Každej špendlík je místo v lese. Starý lom. Bažina u potoka. Hájovna. A úplně nahoře jeden špendlík bez písmen.
+@wait 3
+VIKTOR (vo): Bunkr na Vyhlídce. Starý protiletecký kryt z války.
+@wait 2
+@seq race_map
+@wait 2
+SIMON (vo): To je poslední kontrola nočního orienťáku. Je to na mapě závodu. Závod je zítra večer.
+@wait 2
+@seq none
+@sfx notify
+@prop VIKTOR phone
+@seq phone_chat_klara
+ZEMANOVA [worried]: Viktore, promiň, že píšu tak pozdě. Klára Rybářová z béčka nepřišla dva dny do školy. Její máma volala do sborovny, nikdo nic neví. Šebestová řekla, že je v nemocnici. Ale její máma o žádný nemocnici neví.
+@wait 2
+ZEMANOVA: A já zítra běžím orienťák. S Klárou. Teď asi sama.
+@wait 2
+@seq none
+@prop VIKTOR none
+VIKTOR [scared]: Nová vlaječka. Ten prázdný špendlík. Čeká na dalšího. Na zítřek.
+BEATA [scared]: Na Zemanovou?
+VIKTOR: Nebo na Kláru. Možná je ještě živá. V tom bunkru.
+SIMON: Zavolej tomu policajtovi. Hned.
+@sfx phone
+@cast VIKTOR:sit:0.3:R SIMON:sit:0.55:L BEATA:stand:0.78:L
+@shot cu VIKTOR
+VIKTOR: Pane praporčíku, tady Viktor Skácel. Já vím, co jste říkal. Ale ředitel je mrtvý, Klára Rybářová je pryč a moje mamka má v ruce toxikologii. Prosím.
+BURES (vo): Skácel. Máš štěstí, že ti zrovna dneska věřím o kousek víc než minule. Ředitel měl na zátylku ránu, která ze schodů nebyla. Ale potřebuju něco, s čím můžu za státním zástupcem. Ne mapu. Ne čaj. Něco, co přizná.
+VIKTOR: A závod? Zítra večer v lese bude čtyřicet dětí. S ním.
+BURES (vo): Budu tam. Ale potichu. A ty zůstaneš v posteli. Slib mi to.
+VIKTOR: Slibuju.
+@wait 2
+VIKTOR (vo): Byl to druhej slib, kterej jsem v tomhle příběhu dal. A druhej, kterej jsem nedodržel.
+@wait 3
+@fade out 2
+
+## 27 forest night
+@music race
+@amb forest
+@fx fog
+@caption "DEN 17 — NOČNÍ ORIENŤÁK, 19:55" 3
+@cast LISKUTIN:stand:0.2:R KRIZENECKY:stand:0.42:R BLASKA:stand:0.58:L ZEMANOVA:stand:0.7:L KOVAR:stand:0.8:L OLEKSII:stand:0.9:L
+@prop LISKUTIN megaphone
+@shot wide
+LISKUTIN [angry]: Tak poslouchejte! Čtyřicet dva studentů, jedenáct kontrol, jedna mlha! Kdo se ztratí, toho nehledám, toho rovnou zapíšu jako neklasifikovanýho!
+KRIZENECKY [happy]: Díky, Bohoušu. Milí orientační běžci! Startujete po dvojicích po dvou minutách. Čelovky zapnout, buzoly do ruky. A pamatujte, poslední kontrola je ta nejdůležitější.
+BLASKA [happy]: Pane profesore, letos to vyhraju já. Brabec tu není, tak nemám konkurenci.
+KRIZENECKY [n]: Brabec by tě rád viděl vyhrát, Pavle.
+@mood BLASKA sad
+@wait 1
+KRIZENECKY [happy]: Zemanová? Ty jsi bez dvojice, viď? Klára je nemocná. Nevadí. Poběžíš poslední. Já tě na trati budu hlídat. Osobně.
+ZEMANOVA [worried]: Děkuju, pane profesore.
+OLEKSII [angry]: Já poběžím se Zemanovou. Kovář je stejně pomalej.
+KOVAR [angry]: Já nejsem pomalej, já jsem strategickej!
+KRIZENECKY [sly]: Oleksii, ty běžíš s Kovářem. Pravidla jsou pravidla. Start!
+@sfx whistle_ref
+@exit BLASKA R 2
+@exit OLEKSII R 2
+@exit KOVAR R 2
+@wait 2
+@shot cu KRIZENECKY
+@mood KRIZENECKY sly
+@wait 3
+@fade out 1
+
+## 28 street night
+@music chase
+@amb night
+@caption "SOKOLÍ ULICE — 20:05" 3
+@cast VIKTOR:stand:0.3:R SIMON:stand:0.55:L
+@mood VIKTOR sick
+SIMON [worried]: Ty jsi úplně šedej. Vážně chceš běžet do lesa s rozbitou slezinou?
+VIKTOR: Nechci běžet. Chci tam bejt dřív než on.
+SIMON: Beata?
+VIKTOR: U paní Kunešový. Má Bobíka, deštník a slivovici. Je v lepší ochraně než prezident.
+@prop VIKTOR flashlight
+@prop SIMON flashlight
+@exit VIKTOR R 3
+@exit SIMON R 3
+@wait 2
+
+## 29 kunes night
+@music garage
+@amb room
+@caption "BYT PANÍ KUNEŠOVÉ — 20:20" 3
+@cast BEATA:stand:0.3:R KUNESOVA:sit:0.6:L
+@sfx doorbell
+BEATA [scared]: Někdo zvoní. U nás. Vedle.
+KUNESOVA [n]: Kukátko, holčičko. Potichu.
+@seq peephole_sebestova
+@wait 3
+SEBESTOVA (vo): Viktore? Beatko? Jste doma? Nesu vám teplý čaj.
+@wait 3
+@sfx knock
+@wait 2
+@seq peephole_call
+SEBESTOVA [angry]: Radovane. Kluk není doma. A holka taky ne. Myslím, že je v lese. Ne, poslouchej mě. Udělej to dneska. Všechno. I toho kluka. A pak odjedeme. Jako vždycky. Jako v Sušici.
+@wait 2
+@seq none
+@shot cu BEATA
+@prop BEATA phone
+BEATA [scared]: Nahrála jsem to. Celý.
+KUNESOVA [sly]: Tak to pošli tomu policajtovi. Hned. A teď se drž za mnou.
+@sfx phone_send
+@prop BEATA none
+@sfx door_creak
+@enter SEBESTOVA 0.92 R 2
+@shot wide
+SEBESTOVA [happy]: Paní Kunešová. Dobrý večer. Neviděla jste malou Beatku? Mám o ni strach.
+KUNESOVA [angry]: Strach budete mít za chvilku vy, paní učitelko. Bobíku!
+@sfx dog
+@sfx hit
+@shot cu SEBESTOVA
+@mood SEBESTOVA angry
+@wait 1
+@exit SEBESTOVA R 1
+@sfx car_start
+@wait 2
+KUNESOVA [happy]: Deštník od manžela. Jedenatřicet let v rodině a poprvé k něčemu.
+@wait 2
+
+## 30 forest night
+@music race
+@amb forest
+@fx fog
+@caption "LES — KONTROLA 7" 3
+@cast OLEKSII:stand:0.62:L KOVAR:stand:0.78:L
+@enter VIKTOR 0.25 L 3
+@enter SIMON 0.38 L 3
+OLEKSII [angry]: Skácel? Co tady děláš? Ty máš bejt v posteli! Vypadáš jako mrtvola.
+VIKTOR: Oleksii, poslouchej. Kříženecký. On je vrah. Brabec, Mlejnek, ředitel. A Šebestová mu pomáhá. A teď si vybral Zemanovou.
+KOVAR [surprised]: Ty jo. To je nejlepší vtip, co jsi kdy řekl. Teda kromě toho, že nevypadáš, že si děláš srandu.
+OLEKSII [angry]: Jestli na Zemanovou sáhne, zlámu mu obě ruce.
+SIMON: Ruce mu lámat nemusíš. Stačí nám ho zdržet.
+@prop VIKTOR phone
+@sfx notify
+VIKTOR: Beata. Nahrála Šebestovou. Poslala to Burešovi. Policie jede.
+@prop VIKTOR none
+VIKTOR: Kovář, utíkej zpátky na start. Řekni Liškutínovi, ať pošle všechny pryč z lesa. A ať jde s čelovkou k bunkru na Vyhlídce.
+KOVAR [worried]: Liškutínovi? Ten mě zabije.
+VIKTOR: Liškutín křičí. Kříženecký se usmívá. Vyber si.
+@exit KOVAR L 2
+@wait 1
+OLEKSII: Vyhlídka je tudy. Já tu trať znám nazpaměť.
+@exit OLEKSII R 3
+@exit VIKTOR R 3
+@exit SIMON R 3
+@wait 2
+
+## 31 bunker night
+@music bunker
+@amb bunker
+@fx flashlight
+@caption "BUNKR NA VYHLÍDCE" 3
+@cast RYBAROVA:sit:0.8:L
+@mood RYBAROVA scared
+@enter VIKTOR 0.3 L 3
+@enter SIMON 0.45 L 3
+@enter OLEKSII 0.55 L 3
+VIKTOR [worried]: Kláro? Kláro!
+RYBAROVA [scared]: Kdo je tam? Prosím. Prosím, už ne.
+SIMON [scared]: Žije. Viktore, ona žije!
+VIKTOR: Kláro, jsme z gymplu. Viktor, Šimon a Oleksii. Dostaneme tě ven.
+RYBAROVA [sad]: Je tady s ní. Se Zemanovou. Říkal, že ji vede na poslední kontrolu.
+@sfx footsteps
+@wait 2
+OLEKSII [n]: Slyšíte? Někdo jde.
+VIKTOR: Zhasněte. Všichni.
+@fx dark
+@wait 3
+@sfx footsteps
+@fx flashlight
+@enter KRIZENECKY 0.1 L 3
+@enter ZEMANOVA 0.2 L 3
+@mood ZEMANOVA scared
+@shot cu KRIZENECKY
+KRIZENECKY [happy]: Tak. Poslední kontrola, Zemanová. Gratuluju. Jsi tu první.
+ZEMANOVA [scared]: Tady žádná kontrola není. Tady je jen bunkr.
+KRIZENECKY [sly]: Víš, co je na mapách krásné, Zemanová? Všechno je na nich malé. Lidi tam nejsou. Jenom místa. Jenom tečky a špendlíky. A nikdo se nikdy nezeptá, proč tam ten špendlík je.
+@shot wide
+VIKTOR [angry]: Já se zeptal.
+@shot cu KRIZENECKY
+@mood KRIZENECKY surprised
+@wait 2
+KRIZENECKY [sly]: Skácel. Ty máš ležet. Jak se ti líbil čaj?
+VIKTOR [angry]: Byl jak seno. Jako vy. Celej ten váš zeměpis. Jenom vycpaný seno.
+KRIZENECKY [angry]: Ty malý, otrávený…
+VIKTOR: Beata vaši sestru nahrála. Policie ví všechno. Sušice, Domažlice, Tachov. Brabec. Mlejnek. Hruban.
+@wait 2
+KRIZENECKY [n]: Jarmila vždycky moc mluvila. Ona vybírala. Ty smutný, ty osamělý. Ty, co by nikomu nechyběli. Já jsem jen kreslil mapy.
+@mood KRIZENECKY angry
+KRIZENECKY [angry]: Ale ty, Skácel. Ty jsi na mapu nikdy nepatřil. Ty ses do ní vlezl sám.
+@shot wide
+@move KRIZENECKY 0.25 1
+@sfx hit
+ZEMANOVA [angry]: Pusťte mě!
+@sfx hit
+@mood KRIZENECKY angry
+@fx dark
+@sfx struggle
+@wait 2
+OLEKSII [angry]: Nesahejte na ni!
+@sfx hit
+@sfx struggle
+@wait 2
+@fx flashlight
+@shot wide
+@move OLEKSII 0.2 1
+@pose KRIZENECKY crouch
+SIMON [scared]: Kláro, pojď. Opři se o mě.
+@exit KRIZENECKY L 1
+@shot cu VIKTOR
+VIKTOR: Utíká. K lomu!
+@exit VIKTOR L 2
+@wait 2
+
+## 32 quarry night
+@music climax
+@amb forest
+@fx fog
+@caption "STARÝ LOM" 3
+@cast KRIZENECKY:stand:0.55:L
+@enter VIKTOR 0.2 L 2
+@prop VIKTOR flashlight
+@shot wide
+VIKTOR [angry]: Konec! Pane profesore, konec!
+KRIZENECKY [sly]: Konec? Skácel. Tohle je můj les. Moje mapa. Znám tu každý kámen. Ty jsi tu jen kluk, co se nevyzná ani v posteli.
+@move KRIZENECKY 0.42 2
+VIKTOR [n]: Kde voda spí pod kamenem.
+KRIZENECKY [surprised]: Cože?
+VIKTOR: Vaše keška číslo čtyři. Starý lom. Zatopená jáma. Já jsem ty souřadnice studoval tři dny. Vy stojíte přesně na okraji.
+@shot cu KRIZENECKY
+@wait 2
+@sfx crack
+@seq quarry_fall
+@sfx splash
+@wait 4
+@seq none
+@shot wide
+@exit KRIZENECKY R 1
+@wait 2
+@sfx sirens
+@fx police
+@enter BURES 0.85 R 2
+@enter LISKUTIN 0.7 R 2
+@prop LISKUTIN megaphone
+LISKUTIN [angry]: Kříženecký! Vylez z tý vody a ruce nahoru, nebo tě pošlu k sestře na injekci!
+BURES [n]: Pane Liškutíne, děkuju, dál už to převezmu já.
+@wait 2
+@seq quarry_arrest
+@sfx handcuffs
+BURES (vo): Radovane Kříženecký, zadržuji vás pro podezření z vraždy. Máte právo nevypovídat.
+@wait 3
+@seq none
+@shot two BURES VIKTOR
+BURES [n]: Tvoje sestra je dobrá, Skácel. Ta nahrávka stačí. Šebestovou jsme chytili před chvílí u Rozvadova. Na cestě do Německa.
+VIKTOR [sick]: A Matěj? A Kryštof?
+BURES [sad]: Na mapě je hodně špendlíků. Budeme kopat dlouho.
+@wait 2
+VIKTOR (vo): Den sedmnáctý, devět čtyřicet sedm večer. Přesně šestnáct dní od chvíle, kdy jsem viděl Matěje naposled. Les mi řekl všechno. Jen jsem se musel dívat dost dlouho.
+@wait 3
+@fade out 2
+
+## 33 hall night
+@music hope
+@amb room
+@caption "O HODINU POZDĚJI" 3
+@cast VIKTOR:stand:0.32:R HELENA:stand:0.5:L BEATA:stand:0.66:L KUNESOVA:stand:0.85:L
+@mood VIKTOR sick
+HELENA [sad]: Ty jsi slíbil, že zůstaneš v posteli.
+VIKTOR: Já vím.
+HELENA [happy]: Už mi nikdy nic neslibuj. Radši mi rovnou řekni pravdu.
+BEATA [happy]: Já jsem ji nahrála! Celou! Jsem agentka!
+HELENA: Ty máš zaracha do třiceti let, agentko.
+KUNESOVA [sly]: A já si to všechno zapsala. Pro jistotu.
+@wait 2
+
+## 34 classroom day
+@music finale
+@amb school
+@caption "O ŠEST TÝDNŮ POZDĚJI" 3
+@cast VAREJKA:stand:0.15:R VIKTOR:sit:0.4:L ZEMANOVA:sit:0.55:L SIMON:sit:0.7:L PAZDERA:sit:0.85:L
+VAREJKA [n]: Tak. Dobré ráno. Než začneme. Za Matěje Brabce, Kryštofa Mlejnka a pana ředitele Hrubana. Minuta ticha.
+@seq memorial
+@wait 8
+@seq none
+VAREJKA: Děkuju. Než škola najde nového učitele zeměpisu, budete mít mě. Já jsem starý a nudný. Ale slibuju, že u mě se mapy budou zase jenom kreslit.
+@wait 2
+@shot two VIKTOR ZEMANOVA
+ZEMANOVA [happy]: Prej máš mononukleózu. Nemoc z líbání.
+VIKTOR [happy]: Měl jsem. Už jsem zdravej. Úplně.
+ZEMANOVA [sly]: To je dobře.
+SIMON [sly]: Já tu sedím taky, kdyby někdo zapomněl. Ten, co tě tři týdny živil.
+PAZDERA: Statisticky jsi jako třetí kolo u vozu, Šimone.
+SIMON: Díky, Pazdero.
+@wait 2
+@fade out 1
+
+## 35 window night
+@music epilog
+@amb night
+@caption "DEN 56" 3
+@seq villa_sale
+VIKTOR (vo): Den padesátý šestý. Vila je na prodej. Bunkr na Vyhlídce zasypali. Kláru Rybářovou pustili z nemocnice. Bobík dostal od policie medaili. Teda, piškot.
+@wait 3
+VIKTOR (vo): A já zase sedím u okna. Ze zvyku.
+@wait 3
+@seq moving_truck
+@sfx car_start
+@wait 4
+VIKTOR (vo): Někdo se tam stěhuje. Nese krabici. A v ní…
+@wait 3
+@seq binoculars_globe
+@sfx focus
+@wait 3
+VIKTOR (vo): Glóbus.
+@wait 2
+@sfx notify
+@seq phone_final_cache
+@wait 3
+VIKTOR (vo): Zeměpisná keška týdne číslo pět. Nápověda: Poslední kontrola ještě nebyla.
+@wait 3
+@music off
+@sfx heartbeat
+@fade out 1
+@wait 2
+@seq credits
+@music credits
+@wait 40
