@@ -915,7 +915,7 @@ SFX = {
     'call_end': sfx_call_end, 'heartbeat': sfx_heartbeat, 'sirens': sfx_sirens, 'splash': sfx_splash,
     'crack': sfx_crack, 'struggle': sfx_struggle, 'handcuffs': sfx_handcuffs,
 }
-SFX_GAIN = {'whistle': 0.8, 'hit': 0.9, 'sirens': 0.7, 'heartbeat': 1.0, 'car_start': 0.7, 'fire': 0.6,
+SFX_GAIN = {'whistle': 0.3, 'hit': 0.9, 'sirens': 0.7, 'heartbeat': 1.0, 'car_start': 0.7, 'fire': 0.6,
             'freezer': 0.5, 'footsteps': 0.8}
 
 
@@ -1030,7 +1030,8 @@ def mix(tl, voice_dir, out_path, total):
     n = int((total + 2) * SR)
     voice = np.zeros((n, 2), np.float32)
     import json
-    man = json.load(open(os.path.join(voice_dir, 'manifest.json')))
+    from .timeline import load_manifest
+    man = load_manifest(voice_dir)
     for S in tl:
         for L in S.lines:
             m = man.get(L['key'])

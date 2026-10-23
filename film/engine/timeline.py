@@ -1,5 +1,6 @@
 """Sestavení časové osy filmu ze scénáře a délek namluvených replik."""
 import hashlib
+import math
 import json
 import os
 
@@ -188,15 +189,23 @@ def build(scenes, durations=None, voice_dir=None):
         for A in S.actors.values():
             tail = max(tail, A.moves[-1].t1)
         t = tail + SCENE_TAIL
+        t = math.ceil(t * FPS - 1e-6) / FPS   # hranice scén na celé snímky
         S.t1 = t
         out.append(S)
     return out
 
 
+def load_manifest(voice_dir):
+    import glob
+    m = {}
+    for p in sorted(glob.glob(os.path.join(voice_dir, 'manifest*.json'))):
+        try:
+            with open(p) as f:
+                m.update(json.load(f))
+        except Exception:  # noqa
+            pass
+    return m
+
+
 def load_durations(voice_dir):
-    p = os.path.join(voice_dir, 'manifest.json')
-    if os.path.exists(p):
-        with open(p) as f:
-            m = json.load(f)
-        return {k: v['dur'] for k, v in m.items()}
-    return {}
+    return {k: v['dur'] for k, v in load_manifest(voice_dir).items()}

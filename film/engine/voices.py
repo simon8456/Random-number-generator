@@ -87,11 +87,23 @@ def split_sentences(s):
 
 def main():
     build = sys.argv[1]
-    only = set(sys.argv[2].split(',')) if len(sys.argv) > 2 and sys.argv[2] else None
+    only = set(sys.argv[2].split(',')) if len(sys.argv) > 2 and sys.argv[2] not in ('', 'all') and not sys.argv[2].startswith('redo') else None
+    shard, nshards = (int(x) for x in sys.argv[3].split('/')) if len(sys.argv) > 3 else (0, 1)
     vdir = os.path.join(build, 'voice')
     os.makedirs(vdir, exist_ok=True)
-    mpath = os.path.join(vdir, 'manifest.json')
-    man = json.load(open(mpath)) if os.path.exists(mpath) else {}
+    man = load_manifest(vdir)
+    mpath = os.path.join(vdir, f'manifest_{shard}.json')
+    redo = float(sys.argv[2].split(':')[1]) if len(sys.argv) > 2 and sys.argv[2].startswith('redo:') else None
+    if redo is not None:
+        only = None
+        bad = {k for k, v in man.items() if v['cer'] > redo}
+        print('k přegenerování:', len(bad), flush=True)
+        for k in bad:
+            man.pop(k)
+        old_best = {k: v for k, v in load_manifest(vdir).items() if k in bad}
+        mpath = os.path.join(vdir, 'manifest_redo.json')
+    else:
+        old_best = {}
     scenes = parse(os.path.join(HERE, 'scenar.txt'))
     todo = []
     for sc in scenes:
@@ -104,80 +116,82 @@ def main():
             if key in man and os.path.exists(os.path.join(vdir, man[key]['file'])):
                 continue
             todo.append((key, who, info['text']))
+    if redo is not None:
+        todo = [x for x in todo if x[0] in bad]
+    todo = [x for i, x in enumerate(todo) if i % nshards == shard]
     # výkřik ředitele (ruch ve scéně 23)
-    if not os.path.exists(os.path.join(vdir, 'shout.wav')):
+    if shard == 0 and not os.path.exists(os.path.join(vdir, 'shout.wav')):
         todo.append(('shout', 'HRUBAN', 'Okamžitě odejděte z mé kanceláře! Okamžitě!'))
     print('k namluvení:', len(todo), flush=True)
     if not todo:
         return
-    torch.set_num_threads(4)
+    torch.set_num_threads(int(os.environ.get('TTS_THREADS', '4')))
     from TTS.api import TTS
-    from transformers import pipeline
+    from faster_whisper import WhisperModel
     tts = TTS('tts_models/multilingual/multi-dataset/xtts_v2')
     model = tts.synthesizer.tts_model
-    asr = pipeline('automatic-speech-recognition', model='openai/whisper-small', device='cpu')
+    asr = WhisperModel('small', device='cpu', compute_type='int8', cpu_threads=int(os.environ.get('TTS_THREADS', '4')))
     lat = {}
 
-    def trim_tail(w, sent):
-        """Odstraní halucinované slovo za koncem věty (častá vada XTTS) podle časových značek Whisperu."""
-        import difflib
-        ref = norm(sent).split()
-        if not ref:
-            return w, ''
-        y16 = librosa.resample(w, orig_sr=24000, target_sr=16000)
-        try:
-            r = asr({'raw': y16, 'sampling_rate': 16000}, return_timestamps='word',
-                    generate_kwargs={'language': 'czech', 'task': 'transcribe'})
-        except Exception:  # noqa
-            return w, ''
-        chunks = r.get('chunks') or []
-        words = [(norm(c['text']), c['timestamp']) for c in chunks if norm(c['text'])]
-        hyp = ' '.join(wd for wd, _ in words)
-        if len(words) < 2:
-            return w, hyp
-        last = ref[-1]
-        for i in range(len(words) - 1, max(-1, len(words) - 4), -1):
-            wd, ts = words[i]
-            if difflib.SequenceMatcher(None, wd, last).ratio() >= 0.6:
-                if i < len(words) - 1 and ts[1]:
-                    cut = int((ts[1] + 0.12) * 24000)
-                    if cut < len(w):
-                        w = w[:cut].copy()
-                        fl = min(len(w), 1200)
-                        w[-fl:] *= np.linspace(1, 0, fl)
-                        hyp = ' '.join(wd for wd, _ in words[:i + 1])
-                break
-        return w, hyp
-
     def synth(spk, text, speed, temp, seed):
+        """Namluví repliku po větách, jedním průchodem Whisperu odstraní halucinované konce vět
+        a vrátí (zvuk, přepis)."""
+        import difflib
         if spk not in lat:
             d = model.speaker_manager.speakers[spk]
             lat[spk] = (d['gpt_cond_latent'], d['speaker_embedding'])
         g, e = lat[spk]
         torch.manual_seed(seed)
-        pieces = []
-        hyps = []
-        for sent in split_sentences(text):
+        sents = split_sentences(text)
+        segs = []
+        for sent in sents:
             out = model.inference(sent, 'cs', g, e, temperature=temp, length_penalty=1.0, repetition_penalty=8.0,
                                   top_k=40, top_p=0.8, speed=speed, enable_text_splitting=False)
             w = np.asarray(out['wav'], np.float32)
             w, _ = librosa.effects.trim(w, top_db=38)
-            w, h = trim_tail(w, sent)
-            hyps.append(h)
-            pieces.append(w)
-            pieces.append(np.zeros(int(24000 * 0.22), np.float32))
-        wav = np.concatenate(pieces[:-1]) if pieces else np.zeros(2400, np.float32)
-        return wav, ' '.join(hyps)
+            segs.append(w)
+        gap = np.zeros(int(24000 * 0.22), np.float32)
+        bounds, pos = [], 0
+        for w in segs:
+            bounds.append((pos, pos + len(w)))
+            pos += len(w) + len(gap)
+        full = np.concatenate([np.concatenate([w, gap]) for w in segs])
+        y16 = librosa.resample(full, orig_sr=24000, target_sr=16000)
+        res, _ = asr.transcribe(y16, language='cs', word_timestamps=True, beam_size=2, vad_filter=False,
+                                condition_on_previous_text=False)
+        words = [(norm(wd.word), wd.start, wd.end) for sg in res for wd in (sg.words or []) if norm(wd.word)]
+        kept_audio, kept_words = [], []
+        for (b0, b1), sent, w in zip(bounds, sents, segs):
+            t0, t1 = b0 / 24000, (b1 + len(gap) * 0.5) / 24000
+            ws = [x for x in words if t0 - 0.05 <= (x[1] + x[2]) / 2 < t1]
+            ref = norm(sent).split()
+            if ref and len(ws) >= 2:
+                last = ref[-1]
+                for i in range(len(ws) - 1, max(-1, len(ws) - 4), -1):
+                    if difflib.SequenceMatcher(None, ws[i][0], last).ratio() >= 0.6:
+                        if i < len(ws) - 1:
+                            cut = int((ws[i][2] + 0.12 - t0) * 24000)
+                            if 0 < cut < len(w):
+                                w = w[:cut].copy()
+                                fl = min(len(w), 1200)
+                                w[-fl:] *= np.linspace(1, 0, fl)
+                                ws = ws[:i + 1]
+                        break
+            kept_audio.append(w)
+            kept_words += [x[0] for x in ws]
+        wav = np.concatenate([np.concatenate([w, gap]) for w in kept_audio])[:-len(gap)]
+        return wav, ' '.join(kept_words)
 
     t_start = time.time()
     for idx, (key, who, text) in enumerate(todo):
         spk, speed, shift = VOICES.get(who, VOICES['_default'])
         say = spoken(text)
         best = None
-        for attempt in range(3):
-            temp = [0.5, 0.4, 0.62][attempt]
+        n_att = 6 if key in old_best else 3
+        for attempt in range(n_att):
+            temp = [0.5, 0.4, 0.62, 0.3, 0.55, 0.7][attempt]
             try:
-                w, hyp = synth(spk, say, speed, temp, 1000 + attempt * 17 + idx)
+                w, hyp = synth(spk, say, speed, temp, 1000 + attempt * 17 + idx + (500 if key in old_best else 0))
             except Exception as ex:  # noqa
                 print('chyba', ex, flush=True)
                 continue
@@ -191,6 +205,12 @@ def main():
             if c <= 0.15:
                 break
         c, w, hyp = best
+        if key in old_best and old_best[key]['cer'] <= c:
+            man[key] = old_best[key]   # starší verze byla lepší
+            print(f'[{idx + 1}/{len(todo)}] {who:10} ponechána starší verze ({old_best[key]["cer"]:.2f} <= {c:.2f})',
+                  flush=True)
+            json.dump(man, open(mpath, 'w'), ensure_ascii=False, indent=0)
+            continue
         if shift:
             w = librosa.effects.pitch_shift(w, sr=24000, n_steps=shift)
         w = np.concatenate([np.zeros(1200, np.float32), w, np.zeros(1200, np.float32)])
@@ -203,10 +223,20 @@ def main():
         el = time.time() - t_start
         print(f'[{idx + 1}/{len(todo)}] {who:10} cer={c:.2f} {len(w) / 24000:5.1f}s  ({el / 60:.1f} min)  {text[:50]}',
               flush=True)
-        if idx % 5 == 0 or idx == len(todo) - 1:
+        if True:
             json.dump(man, open(mpath, 'w'), ensure_ascii=False, indent=0)
     json.dump(man, open(mpath, 'w'), ensure_ascii=False, indent=0)
-    make_env(vdir, man)
+
+
+def load_manifest(vdir):
+    import glob
+    man = {}
+    for p in sorted(glob.glob(os.path.join(vdir, 'manifest*.json'))):
+        try:
+            man.update(json.load(open(p)))
+        except Exception:  # noqa
+            pass
+    return man
 
 
 def make_env(vdir, man):
@@ -225,6 +255,8 @@ def make_env(vdir, man):
 if __name__ == '__main__':
     if len(sys.argv) > 2 and sys.argv[2] == 'env':
         vd = os.path.join(sys.argv[1], 'voice')
-        make_env(vd, json.load(open(os.path.join(vd, 'manifest.json'))))
+        m = load_manifest(vd)
+        json.dump(m, open(os.path.join(vd, 'manifest.json'), 'w'), ensure_ascii=False, indent=0)
+        make_env(vd, m)
     else:
         main()

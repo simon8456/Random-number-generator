@@ -340,6 +340,10 @@ class Renderer:
                       walk=(x * W) / 38.0, talk=talking, gest=gest, prop=Actor.at(A.prop, T),
                       tilt=0.025 * math.sin(T * 0.7 + len(n)) + talking * 0.035 * math.sin(T * 2.3),
                       look_x=0.35 * fac if pose != 'bed' else 0.2)
+            if S.set in ('forest', 'bunker', 'quarry') and self.looks[n].kind in ('tm', 'tf') and n != 'RYBAROVA':
+                st['headlamp'] = True
+            if n == 'RYBAROVA' and S.set == 'bunker' and T < S.t0 + (S.t1 - S.t0) * 0.75:
+                st['tied'] = True
             draw_character(ctx, self.looks[n], st)
         ctx.restore()
 
@@ -391,17 +395,17 @@ class Renderer:
                 ctx.save()
                 ctx.scale(2, 2)
                 ctx.set_source_surface(fs, -off / 2 if i == 0 else -(640 - off / 2) % 640 - 0, 40 * i - 30)
-                ctx.paint_with_alpha(0.75)
+                ctx.paint_with_alpha(0.5)
                 ctx.restore()
         # vinětace a zrno
         ctx.set_source_surface(self.vign[0], 0, 0)
         ctx.paint()
-        g = self.grain[int(T * FPS) % len(self.grain)][0]
+        g = self.grain[0][0]   # statická textura papíru — šetří datový tok
         ctx.save()
         ctx.scale(2, 2)
         ctx.set_operator(cairo.OPERATOR_OVERLAY)
         ctx.set_source_surface(g, 0, 0)
-        ctx.paint_with_alpha(0.07)
+        ctx.paint_with_alpha(0.05)
         ctx.restore()
         ctx.set_operator(cairo.OPERATOR_OVER)
 

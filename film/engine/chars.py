@@ -294,6 +294,14 @@ def draw_character(ctx, look, st):
         _prop(ctx, prop, hand, f, H, t)
     if pose == 'bed':
         _draw_bed_front(ctx, look, f, hip_y)
+    if st.get('tied'):
+        ctx.set_source_rgb(*hexc('b08a50'))
+        ctx.set_line_width(5)
+        for k in (0.3, 0.55, 0.8):
+            yy = sh_y + (hip_y - sh_y) * k
+            ctx.move_to(-hw * 1.15, yy)
+            ctx.curve_to(-hw * 0.5, yy + 8, hw * 0.5, yy + 8, hw * 1.15, yy)
+        ctx.stroke()
     ctx.restore()
 
 
@@ -781,6 +789,25 @@ def _head(ctx, look, r, f, st, t):
         ctx.move_to(fx - r * 0.1, -r * 0.05)
         ctx.line_to(fx + r * 0.1, -r * 0.05)
         ctx.stroke()
+    if st.get('headlamp'):
+        ctx.save()
+        ctx.set_source_rgb(0.15, 0.15, 0.15)
+        ctx.set_line_width(r * 0.12)
+        ctx.arc(0, -r * 0.1, r * 1.0, math.pi * 1.08, math.pi * 1.92)
+        ctx.stroke()
+        rrect(ctx, fx - r * 0.2, -r * 0.92, r * 0.4, r * 0.26, 4)
+        fill_stroke(ctx, (0.25, 0.25, 0.25), 2)
+        ctx.arc(fx + f * r * 0.02, -r * 0.79, r * 0.09, 0, 2 * math.pi)
+        ctx.set_source_rgb(1, 0.97, 0.8)
+        ctx.fill()
+        import cairo as _c
+        g = _c.RadialGradient(fx, -r * 0.79, 0, fx, -r * 0.79, r * 1.4)
+        g.add_color_stop_rgba(0, 1, 0.95, 0.75, 0.55)
+        g.add_color_stop_rgba(1, 1, 0.95, 0.75, 0)
+        ctx.set_source(g)
+        ctx.arc(fx, -r * 0.79, r * 1.4, 0, 2 * math.pi)
+        ctx.fill()
+        ctx.restore()
     if d.get('clip'):
         ctx.save()
         ctx.translate(-f * r * 0.55, -r * 0.82)

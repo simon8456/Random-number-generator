@@ -5,6 +5,11 @@ Asi 45minutový 2D animovaný thriller. Obraz, hudbu, zvuky i hlasy generuje kó
 > ⚠️ **SPOILERY:** `scenar.txt` a `engine/seqs.py` obsahují celý děj. Pokud chceš film vidět bez spoilerů,
 > nejdřív se podívej na video.
 
+## Film
+
+Hotový film (46 min, 1280×720, české hlasy, hudba, titulky) je kvůli limitu GitHubu (100 MB na soubor)
+rozdělený na tři části: `video/Posledni_kontrola_cast1.mp4`, `cast2.mp4` a `cast3.mp4`.
+
 ## Jak film vzniká
 
 | Část | Soubor | Co dělá |
